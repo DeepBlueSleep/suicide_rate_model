@@ -45,18 +45,23 @@ def result():
                 #General classification of suicide rates (based off WHO's data)
                 if (results < 5.0):
                         suicide_rate_classification = 'Low'
-                        icon = 'fa-smile-beam'
+                        icon = 'fa-ambulance'
+                        number = '1'
                 elif ((results >= 5.0) and (results < 10.0)):
                         suicide_rate_classification = 'Medium'
-                        icon = 'fa-meh'
+                        icon = 'fa-ambulance'
+                        number = '2'
                 elif ((results >= 10.0) and (results < 15.0)):
                         suicide_rate_classification = 'High'
-                        icon = 'fa-frown'
+                        icon = 'fa-ambulance'
+                        number = '3'
                 elif (results >= 15.0):
                         suicide_rate_classification = 'Extremely-High'
-                        icon = 'fa-sad-cry'
+                        icon = 'fa-ambulance'
+                        number = '4'
                 else:
                         suicide_rate_classification = 'Not-Applicable'
                         icon = 'fa-question'
+                        number = '1'
                 
-                return render_template("result.html", prediction=prediction, rate=suicide_rate_classification, icon=icon)
+                return render_template("result.html", prediction=prediction, rate=suicide_rate_classification, icon=icon, number=number)

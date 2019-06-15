@@ -18,6 +18,7 @@
             margin: 0;
             padding-left: 0;
             padding-right: 0;
+            border-radius: 0 !important;
         }
         
         body {
@@ -34,7 +35,7 @@
             font-weight: 700;
         }
         
-        h1 {
+        h2 {
             text-align: center;
             font-weight: bold;
             margin: 10px;
@@ -49,7 +50,8 @@
         button {
             font-size: 20px !important;
             padding: 15px 40px !important;
-            text-align: center;
+            margin: 10px auto;
+            display: flex !important;
         }
         
         p {
@@ -58,12 +60,34 @@
             text-align: center;
         }
         
+        .fa-question-circle {
+            display: flex;
+            justify-content: center;
+            font-size: 40px;
+            color: slategrey;
+            transition: color 0.5s;
+        }
+        
+        .fa-question-circle:hover {
+            color: darkslategrey;
+        }
+
+        .close {
+            padding: 0 !important;
+            float: right;
+        }
+
+        .modal-title {
+            float:left;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1>Suicide Rate Model</h1>
+            <h2>Suicide Rate Model</h2>
+            <br>
+            <i class='fa fa-question-circle' data-toggle="modal" data-target="#info-modal"></i>
             <p>A machine learning model to predict the rate of suicide in a country depending on various factors such as socio-economic status, quality of life, individual characteristics, etc.<br>
                 <span class="b">Made by Gerald Doh</span> - <a href="https://geralddoh.com/">Website</a></p>
             </div>
@@ -216,12 +240,6 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <label for="population">Population of Country</label>
-                    <input class="form-control" type="number" id="population" name="population" placeholder="0" required>
-                    <br>
-                </div>
-                <br>
-                <div class="form-group">
                     <label for="age">Age Group</label>
                     <select class="form-control" id="age" name="age" required>
                         <option value="age_5-14 years">5-14</option>
@@ -231,24 +249,6 @@
                         <option value="age_55-74 years">55-74</option>
                         <option value="age_75+ years">75+</option>
                     </select>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="hdi">HDI for Year available</label>
-                    <select class="form-control" id="hdi" name="hdi" required>
-                        <option value="0">No</option>
-                        <option value="1">Yes</option>
-                    </select>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="gdp-year">Total GDP for Year</label>
-                    <input class="form-control" type="number" id="gdp-year" name="gdp-year" placeholder="0" required>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="gdp-capita">GDP per Capita for Year</label>
-                    <input class="form-control" type="number" id="gdp-capita" name="gdp-capita" placeholder="0" required>
                 </div>
                 <br>
                 <div class="form-group">
@@ -271,9 +271,65 @@
                     </select>
                 </div>
                 <br>
+                <div class="form-group">
+                    <label for="population">Group Size</label>
+                    <input class="form-control" type="number" id="population" name="population" placeholder="0" required>
+                    <br>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="hdi">HDI for Year available</label>
+                    <select class="form-control" id="hdi" name="hdi" required>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="gdp-year">Total GDP for Year (USD)</label>
+                    <input class="form-control" type="number" id="gdp-year" name="gdp-year" placeholder="0" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="gdp-capita">GDP per Capita for Year (USD)</label>
+                    <input class="form-control" type="number" id="gdp-capita" name="gdp-capita" placeholder="0" required>
+                </div>
+                <br>
                 <br>
                 <button class="btn btn-primary" type="submit">Submit</button>
             </form>
+            <div class="modal fade" id="info-modal" tabindex="-1" role="dialog" aria-labelledby="info-modal-label"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="exampleModalLabel">Information</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Regarding the inputs:<br><br><br>
+                        <span class="b">Country</span> is the country whose suicide rates are being predicted<br>e.g suicide rates in Canada<br><br>
+                        <span class="b">Year</span> is the year where the suicide rates are being predicted<br>e.g suicide rates in 2016<br><br>
+                        <span class="b">Group Size</span> is number of people within the group whose suicide rates are being predicted<br>e.g  
+                        Number of British males aged 15-24<br><br>
+                        <span class="b">Age Group</span> is the age range of the group whose suicide rates are being predicted<br>e.g suicide
+                        rates of people aged 35-54<br><br>
+                        <span class="b">HDI for year available</span> is whether the selected country's Human Development Index has been published
+                        in the selected year<br>e.g HDI for Albania in 1987 is not available<br><br>
+                        <span class="b">Total GDP for Year</span> is total Gross Domestic Product generated by the selected country in the selected year
+                        <br>e.g Australia's GDP in 1985 is US$180190994861<br><br>
+                        <span class="b">GDP per Capita for Year</span> is Gross Domestic Product generated by each person in selected country and year
+                        <br>e.g Singapore's GDP per Capita in 1989 is US$12514<br><br>
+                        <span class="b">Gender</span> is gender of the group whose suicide rates are being predicted<br>e.g suicide rates of
+                        females<br><br>
+                        <span class="b">Generation</span> is the generation whose suicide rates are being predicted<br>e.g suicide rates of Baby
+                        Boomers<br><br>
+                    </div>
+                </div>
+            </div>
         </div>
-    </body>
-    </html>
+    </div>
+</body>
+</html>

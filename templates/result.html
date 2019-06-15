@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -17,15 +17,16 @@
             font-family: 'Roboto Mono', monospace;
             font-weight: 400;
         }
-
+        
         .container, .jumbotron {
             height: 100%;
             width: 100%;
             margin: 0;
             padding-left: 0;
             padding-right: 0;
+            border-radius: 0 !important;
         }
-
+        
         .b {
             font-weight: 700;
         }
@@ -33,51 +34,98 @@
         h2 {
             text-align: center;
         }
-
+        
         .Low {
             background: lightskyblue;
             color: darkslategrey;
         }
-
+        
         .Medium {
             background: lightgreen;
             color: darkslategrey;
         }
-
+        
         .High {
             background: indianred;
             color: lightgrey;
         }
-
+        
         .Extremely-High {
             background: darkred;
             color: lightgrey;
         }
-
+        
         .Not-Applicable {
             background: lightslategrey;
             color: darkslategrey;
         }
-
+        
         .rate {
             text-align: center;
-            margin-top: 300px;
-            font-size: 50px;
+            margin: 10% 10px 20px;
+            font-size: 20px;
         }
-
-        #prediction {
+        
+        .dark {
             color: darkslategrey !important;
         }
+        
+        p {
+            font-size: 15px !important;
+            margin: 10px;
+            text-align: center;
+        }
+        
+        .fa-ambulance{
+            font-size: 80px;
+            text-align: center;
+            margin: 30px auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        
+        .iconsnumber {
+            visibility: hidden;
+        }
+        
+        .innerhtml {
+            display: flex;
+            width: auto;
+            margin: 30px auto;
+            justify-content: space-between;
+        }
+        
     </style>
 </head>
 <body class={{rate}}>
-    <div class="container">
+    <div class="container" id={{rate}}>
         <div class="jumbotron">
-            <h2 id="prediction">{{ prediction }}</h2>
+            <h2 class="dark">{{ prediction }}</h2><br>
+            <p class="dark">This machine learning model is trained on data from Kaggle's <a href="https://www.kaggle.com/russellyates88/suicide-rates-overview-1985-to-2016">suicide rates overview</a> dataset.<br>
+                Input data that are not present on the dataset may not be accurate</p>
+            </div>
         </div>
-    </div>
-    <div class="rate {{rate}}">The rate of suicide under these circumstances is <span class="b">{{rate}}</span></div>
-    <div class="fa {{icon}}"></div>
-</body>
-
-</html>
+        <div class="rate {{rate}}">The rate of suicide under these circumstances is <span class="b">{{rate}}</span></div>
+        <div class="innerhtml" id={{number}}><span id={{icon}} class="icons-class"></span></div>
+    </body>
+    
+    </html>
+    <script>
+        
+        insert = document.getElementsByClassName('innerhtml')[0];
+        iclass = document.getElementsByClassName('icons-class')[0].id;
+        rate = document.getElementsByClassName('container')[0].id;
+        
+        window.onload = function() {
+            
+            ielement = '';
+            
+            for (i = 0; i < insert.id; i++) {
+                ielement = ielement + "<i class='fa " + iclass + "' '" + rate + "'></i>"
+            }
+            
+            insert.innerHTML = ielement;
+        }
+        
+    </script>

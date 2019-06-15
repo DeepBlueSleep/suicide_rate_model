@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Suicide Rate Model</title>
+    
+    <style>
+        
+        .container, .jumbotron {
+            width: 100%;
+            margin: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        body {
+            font-size: 30px;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 400;
+        }
+        
+        .content {
+            margin: 30px;
+        }
+        
+        .b {
+            font-weight: 700;
+        }
+        
+        h1 {
+            text-align: center;
+            font-weight: bold;
+            margin: 10px;
+        }
+        
+        .form-control {
+            height: 60px !important;
+            width: 100%;
+            font-size: 30px;
+        }
+        
+        button {
+            font-size: 30px !important;
+            padding: 15px 60px !important;
+            text-align: center;
+        }
+        
+        p {
+            font-size: 30px !important;
+            margin: 10px;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Suicide Rate Model</h1>
+            <p>A machine learning model to predict the rate of suicide in a country depending on various factors such as socio-economic status, quality of life, individual characteristics, etc.<br>
+                <span class="b">Made by Gerald Doh</span> - <a href="https://geralddoh.com/">Website</a></p>
+            </div>
+        </div>
+        <div class="content">
+            <form action="/result" method="POST">
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <select class="form-control" id="country" name="country" required>
+                        <option value="country_Albania">Albania</option>
+                        <option value="country_Antigua and Barbuda">Antigua and Barbuda</option>
+                        <option value="country_Argentina">Argentina</option>
+                        <option value="country_Armenia">Armenia</option>
+                        <option value="country_Aruba">Aruba</option>
+                        <option value="country_Australia">Australia</option>
+                        <option value="country_Austria">Austria</option>
+                        <option value="country_Azerbaijan">Azerbaijan</option>
+                        <option value="country_Bahamas">Bahamas</option>
+                        <option value="country_Bahrain">Bahrain</option>
+                        <option value="country_Barbados">Barbados</option>
+                        <option value="country_Belarus">Belarus</option>
+                        <option value="country_Belgium">Belgium</option>
+                        <option value="country_Belize">Belize</option>
+                        <option value="country_Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                        <option value="country_Brazil">Brazil</option>
+                        <option value="country_Bulgaria">Bulgaria</option>
+                        <option value="country_Cabo Verde">Cabo Verde</option>
+                        <option value="country_Canada">Canada</option>
+                        <option value="country_Chile">Chile</option>
+                        <option value="country_Colombia">Colombia</option>
+                        <option value="country_Costa Rica">Costa Rica</option>
+                        <option value="country_Croatia">Croatia</option>
+                        <option value="country_Cuba">Cuba</option>
+                        <option value="country_Cyprus">Cyprus</option>
+                        <option value="country_Czech Republic">Czech Republic</option>
+                        <option value="country_Denmark">Denmark</option>
+                        <option value="country_Dominica">Dominica</option>
+                        <option value="country_Ecuador">Ecuador</option>
+                        <option value="country_El Salvador">El Salvador</option>
+                        <option value="country_Estonia">Estonia</option>
+                        <option value="country_Fiji">Fiji</option>
+                        <option value="country_Finland">Finland</option>
+                        <option value="country_France">France</option>
+                        <option value="country_Georgia">Georgia</option>
+                        <option value="country_Germany">Germany</option>
+                        <option value="country_Greece">Greece</option>
+                        <option value="country_Grenada">Grenada</option>
+                        <option value="country_Guatemala">Guatemala</option>
+                        <option value="country_Guyana">Guyana</option>
+                        <option value="country_Hungary">Hungary</option>
+                        <option value="country_Iceland">Iceland</option>
+                        <option value="country_Ireland">Ireland</option>
+                        <option value="country_Israel">Israel</option>
+                        <option value="country_Italy">Italy</option>
+                        <option value="country_Jamaica">Jamaica</option>
+                        <option value="country_Japan">Japan</option>
+                        <option value="country_Kazakhstan">Kazakhstan</option>
+                        <option value="country_Kiribati">Kiribati</option>
+                        <option value="country_Kuwait">Kuwait</option>
+                        <option value="country_Kyrgyzstan">Kyrgyzstan</option>
+                        <option value="country_Latvia">Latvia</option>
+                        <option value="country_Lithuania">Lithuania</option>
+                        <option value="country_Luxembourg">Luxembourg</option>
+                        <option value="country_Macau">Macau</option>
+                        <option value="country_Maldives">Maldives</option>
+                        <option value="country_Malta">Malta</option>
+                        <option value="country_Mauritius">Mauritius</option>
+                        <option value="country_Mexico">Mexico</option>
+                        <option value="country_Mongolia">Mongolia</option>
+                        <option value="country_Montenegro">Montenegro</option>
+                        <option value="country_Netherlands">Netherlands</option>
+                        <option value="country_New Zealand">New Zealand</option>
+                        <option value="country_Nicaragua">Nicaragua</option>
+                        <option value="country_Norway">Norway</option>
+                        <option value="country_Oman">Oman</option>
+                        <option value="country_Panama">Panama</option>
+                        <option value="country_Paraguay">Paraguay</option>
+                        <option value="country_Philippines">Philippines</option>
+                        <option value="country_Poland">Poland</option>
+                        <option value="country_Portugal">Portugal</option>
+                        <option value="country_Puerto Rico">Puerto Rico</option>
+                        <option value="country_Qatar">Qatar</option>
+                        <option value="country_Republic of Korea">Republic of Korea</option>
+                        <option value="country_Romania">Romania</option>
+                        <option value="country_Russian Federation">Russian Federation</option>
+                        <option value="country_Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                        <option value="country_Saint Lucia">Saint Lucia</option>
+                        <option value="country_Saint Vincent and Grenadines">Saint Vincent and Grenadines</option>
+                        <option value="country_San Marino">San Marino</option>
+                        <option value="country_Serbia">Serbia</option>
+                        <option value="country_Seychelles">Seychelles</option>
+                        <option value="country_Singapore">Singapore</option>
+                        <option value="country_Slovakia">Slovakia</option>
+                        <option value="country_Slovenia">Slovenia</option>
+                        <option value="country_South Africa">South Africa</option>
+                        <option value="country_Spain">Spain</option>
+                        <option value="country_Sri Lanka">Sri Lanka</option>
+                        <option value="country_Suriname">Suriname</option>
+                        <option value="country_Sweden">Sweden</option>
+                        <option value="country_Switzerland">Switzerland</option>
+                        <option value="country_Thailand">Thailand</option>
+                        <option value="country_Trinidad and Tobago">Trinidad and Tobago</option>
+                        <option value="country_Turkey">Turkey</option>
+                        <option value="country_Turkmenistan">Turkmenistan</option>
+                        <option value="country_Ukraine">Ukraine</option>
+                        <option value="country_United Arab Emirates">United Arab Emirates</option>
+                        <option value="country_United Kingdom">United Kingdom</option>
+                        <option value="country_United States">United States</option>
+                        <option value="country_Uruguay">Uruguay</option>
+                        <option value="country_Uzbekistan">Uzbekistan</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <select class="form-control" id="year" name="year" required>
+                        <option value="year_1985">1985</option>
+                        <option value="year_1986">1986</option>
+                        <option value="year_1987">1987</option>
+                        <option value="year_1988">1988</option>
+                        <option value="year_1989">1989</option>
+                        <option value="year_1990">1990</option>
+                        <option value="year_1991">1991</option>
+                        <option value="year_1992">1992</option>
+                        <option value="year_1993">1993</option>
+                        <option value="year_1994">1994</option>
+                        <option value="year_1995">1995</option>
+                        <option value="year_1996">1996</option>
+                        <option value="year_1997">1997</option>
+                        <option value="year_1998">1998</option>
+                        <option value="year_1999">1999</option>
+                        <option value="year_2000">2000</option>
+                        <option value="year_2001">2001</option>
+                        <option value="year_2002">2002</option>
+                        <option value="year_2003">2003</option>
+                        <option value="year_2004">2004</option>
+                        <option value="year_2005">2005</option>
+                        <option value="year_2006">2006</option>
+                        <option value="year_2007">2007</option>
+                        <option value="year_2008">2008</option>
+                        <option value="year_2009">2009</option>
+                        <option value="year_2010">2010</option>
+                        <option value="year_2011">2011</option>
+                        <option value="year_2012">2012</option>
+                        <option value="year_2013">2013</option>
+                        <option value="year_2014">2014</option>
+                        <option value="year_2015">2015</option>
+                        <option value="year_2016">2016</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="population">Population of Country</label>
+                    <input class="form-control" type="number" id="population" name="population" placeholder="0" required>
+                    <br>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="age">Age Group</label>
+                    <select class="form-control" id="age" name="age" required>
+                        <option value="age_5-14 years">5-14</option>
+                        <option value="age_15-24 years">15-24</option>
+                        <option value="age_25-34 years">25-34</option>
+                        <option value="age_35-54 years">35-54</option>
+                        <option value="age_55-74 years">55-74</option>
+                        <option value="age_75+ years">75+</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="hdi">HDI for Year available</label>
+                    <select class="form-control" id="hdi" name="hdi" required>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="gdp-year">Total GDP for Year</label>
+                    <input class="form-control" type="number" id="gdp-year" name="gdp-year" placeholder="0" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="gdp-capita">GDP per Capita for Year</label>
+                    <input class="form-control" type="number" id="gdp-capita" name="gdp-capita" placeholder="0" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="sex">Gender</label>
+                    <select class="form-control" id="sex" name="sex" required>
+                        <option value="sex_male">Male</option>
+                        <option value="sex_female">Female</option>
+                    </select>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="generation">Generation</label>
+                    <select class="form-control" id="generation" name="generation" required>
+                        <option value="generation_G.I. Generation">G.I. Generation</option>
+                        <option value="generation_Silent">Silent Generation</option>
+                        <option value="generation_Boomers">Baby Boomer</option>
+                        <option value="generation_Generation X">Generation X</option>
+                        <option value="generation_Millenials">Millenial</option>
+                        <option value="generation_Generation Z">Generation Z</option>
+                    </select>
+                </div>
+                <br>
+                <br>
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+    </html>

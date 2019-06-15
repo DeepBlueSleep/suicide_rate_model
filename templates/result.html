@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <title>Suicide Rate Model - Results</title>
+    <style>
+        body {
+            font-size: 30px;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 400;
+        }
+
+        .container, .jumbotron {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .b {
+            font-weight: 700;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+
+        .Low {
+            background: lightskyblue;
+            color: darkslategrey;
+        }
+
+        .Medium {
+            background: lightgreen;
+            color: darkslategrey;
+        }
+
+        .High {
+            background: indianred;
+            color: lightgrey;
+        }
+
+        .Extremely-High {
+            background: darkred;
+            color: lightgrey;
+        }
+
+        .Not-Applicable {
+            background: lightslategrey;
+            color: darkslategrey;
+        }
+
+        .rate {
+            text-align: center;
+            margin-top: 300px;
+            font-size: 70px;
+        }
+
+        #prediction {
+            color: darkslategrey !important;
+        }
+    </style>
+</head>
+<body class={{rate}}>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 id="prediction">{{ prediction }}</h1>
+        </div>
+    </div>
+    <div class="rate {{rate}}">The rate of suicide under these circumstances is <span class="b">{{rate}}</span></div>
+    <div class="fa {{icon}}"></div>
+</body>
+
+</html>
